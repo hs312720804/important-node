@@ -28,5 +28,7 @@
  * @return {number}
  */
 var longestConsecutive = function(nums: number[]):number {
-
+  return 1
 };
+
+console.log(longestConsecutive([1]))
