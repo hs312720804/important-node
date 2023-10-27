@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <a href="https://www.baidu.com/">点我跳转到百度</a>
+  <a href="https://juejin.cn/">点我跳转到掘金</a>
+  <a href="https://www.bilibili.com/">点我跳转到B站</a>
+  <a href="#">测试</a>
+
+</body>
+
+<script>
+  const aDom = document.getElementsByTagName('a')
+  console.log('aDom-->', aDom)
+  document.body.addEventListener('click', (event) => {
+    event.preventDefault();
+    console.log(event)
+    const target = event.target
+    if (target.tagName === 'A') {
+        // 获取到a标签上的链接
+        const url = target.getAttribute('href');
+        console.log(url)
+        // 进行的操作。confirm返回一个布尔值，点了确定为true，否则为false
+        if (confirm(`即将跳转到${url}`)) {
+            window.open(url)
+        }
+    }
+    
+  })
+
+
+
+</script>
+</html>
+
+
+<!-- https://blog.csdn.net/qq_43398736/article/details/126797240 -->
+
+
+
