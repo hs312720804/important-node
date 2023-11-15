@@ -5,7 +5,7 @@ function myInstanceof (obj, constructor) {
     if (proto === null) {
       return false
     } 
-    if(proto === constructor.prototype) {
+    if (proto === constructor.prototype) {
       return true
     }
     proto = Object.getPrototypeOf(proto)
