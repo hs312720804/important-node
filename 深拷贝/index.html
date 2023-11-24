@@ -8,7 +8,7 @@
 <body>
   <button id="aaa">测试测试测试</button>
   <!-- <script src="./深拷贝/my2.js"></script> -->
-  <script src="./深拷贝/deepClone.js"></script>
+  <!-- <script src="./深拷贝/deepClone.js"></script> -->
 
   <script>
     const button = document.getElementById('aaa')
@@ -22,6 +22,14 @@
     //     copyfn()
     //   }, 1000)
     // button.addEventListener('click', throttle(test, 5000))
+    button.addEventListener('click', () => {
+      Promise.resolve(1).then(res => {console.log('promise1')})
+      console.log('button1')
+    })
+    button.addEventListener('click', () => {
+      Promise.resolve(1).then(res => {console.log('promise2')})
+      console.log('button2')
+    })
   </script>
 </body>
 </html>

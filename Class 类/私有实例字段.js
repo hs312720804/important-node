@@ -1,7 +1,7 @@
 // 私有字段只能在类的主体中访问
 // https://blog.csdn.net/m0_37824255/article/details/124799714
 class User {
-  #name; 
+  #name = 555; 
   name1 = 1231
   constructor(name) {
     this.#name = name; 
