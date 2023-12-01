@@ -68,7 +68,7 @@ var lengthOfLongestSubstring = function(s) {
     if (left !== 0) {
       set.delete(s[left-1])
     }
-    while (right < s.length -1 && !set.has(s[right])) {
+    while (right < s.length && !set.has(s[right])) {
       set.add(s[right])
       right++
     }
@@ -81,4 +81,5 @@ var lengthOfLongestSubstring = function(s) {
 
 // s = "abcabcbb"
 s = "bbbbb"
+s = " "
 console.log(lengthOfLongestSubstring(s))
