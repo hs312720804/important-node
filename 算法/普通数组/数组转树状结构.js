@@ -22,7 +22,7 @@ const flatArr = [
 //   })
 // }
 
-// console.log(getTreeData(flatArr))
+console.log(getTreeData(flatArr))
 
 
 
@@ -38,8 +38,9 @@ const flatArr = [
 //   }, [])
 // }
 
-
+// 非递归方式：
 function getTreeData (data) {
+  // 利用两层filter实现
   return data.filter(item => {
     item.child = data.filter(item2 => {
       return item.id === item2.parentId
@@ -48,6 +49,7 @@ function getTreeData (data) {
   })
 }
 
+// 递归方式：
 function getTreeData (data, parentId) {
   function getChildByParentId (parentId) {
     return data.reduce((prev, current) => {
