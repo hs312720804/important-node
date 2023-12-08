@@ -82,4 +82,27 @@ var coinChange = function (coins, amount) {
 // 一共需要计算s个状态，每个状态需要遍历n个面额来转移状态。空间复杂度是O(s)，也就是dp数组的长度
 
 
+// dp[i] 凑成总金额为 i 所需的 最少的硬币个数 
+// dp[i] = Math.min(dp[i], dp[i-coin] + 1)
+// 初始化：dp[0] = 0
+// 遍历顺序：从前往后
 
+var coinChange = function (coins, amount) {
+  let dp = new Array(amount+1).fill(Infinity)
+  dp[0] = 0
+
+  for (let i = 1; i < amount+1; i++) {
+    for (let coin of coins) {
+      if (i >=coin) {
+        dp[i] = Math.min(dp[i], dp[i - coin] + 1)
+      }
+    }
+  }
+  return dp[amount] === Infinity ? -1 : dp[amount]
+}
+
+// 输入：
+coins = [1, 2, 5], amount = 11
+// 输出：3 
+// 解释：11 = 5 + 5 + 1
+console.log(coinChange(coins, amount))

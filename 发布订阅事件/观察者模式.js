@@ -7,7 +7,7 @@ class Dep { // 被观察者 学生
     this.observers = []; // 存储所有的观察者
   }
   // 收集所有的观察者
-  attach(o){ // Dep. prototype. attch
+  attach(o) { // Dep. prototype. attch
     this.observers.push(o)
   }
   // 更新被观察者 状态的方法
@@ -19,7 +19,7 @@ class Dep { // 被观察者 学生
   }
 }
 
-class Watcher{ // 观察者 父母和老师
+class Watcher { // 观察者 父母和老师
   constructor(name) {
     this.name = name
   }
