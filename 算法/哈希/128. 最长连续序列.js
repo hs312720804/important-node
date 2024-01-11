@@ -26,4 +26,29 @@
 //     0 <= nums.length <= 105
 //     -109 <= nums[i] <= 109
 
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var longestConsecutive = function(nums) {
+  const numsSet = new Set(nums)
+  let res = 0
+  for (let item of numsSet) {
+      if (!numsSet.has(item - 1)) {
+        let count = 1
+        let currentItem = item
+
+        while (numsSet.has(currentItem+1)) {
+          count++
+          currentItem++
+        }
+        res = Math.max(res, count)
+      }
+
+  }
+  return res
+};
+// nums = [100,4,200,1,3,2]
+nums = [0]
+console.log(longestConsecutive(nums) )
 
