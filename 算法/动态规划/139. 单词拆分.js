@@ -48,20 +48,21 @@ var wordBreak = function(s, wordDict) {
 // d[i][j] = 索引 i-j 之间需要用字典单词的次数
 // s = "leetcode", wordDict = ["leet", "code"]
 
-function coinExchange (coinList, total) {
-  // dp[i] = dp[i - coin] + 1
-  // dp[0] = 0
-
-  const dp = new Array(total + 1).fill(Infinity)
-  dp[0] = 0
-  for (let i = 1; i <= total; i++) {
-    for (let coin of coinList) {
-      if (i >= coin) {
-        dp[i] = dp[i - coin] + 1
-      }
+var wordBreak = function(s, wordDict) {
+  let dp = new Array(s.length + 1).fill(false)
+    dp[0] = true
+    for (let i = 1; i <= s.length; i++) {
+        for (let j = 0; j < i; j++) {
+            const str = s.slice(j, i)
+            const flag = wordDict.includes(str)
+            dp[i] = dp[j] && flag
+            if (dp[i]) {
+              break
+            }
+        }
     }
-
-  }
-  return dp[total] === Infinity ? -1 : dp[total]
+    return dp[s.length]
 
 }
+s = "leetcode", wordDict = ["leet", "code"]
+console.log(wordBreak(s, wordDict))
