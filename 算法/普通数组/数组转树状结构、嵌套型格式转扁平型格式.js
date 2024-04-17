@@ -41,6 +41,8 @@ console.log(getTreeData(flatArr))
 // 非递归方式：
 function getTreeData (data) {
   // 利用两层filter实现
+  // 缺陷：当需要新增字段时，这个字段是依赖于父级元素，可能因为元素顺序问题，没有办法正确添加字段
+  // reduce方式就没有这个问题了，因为他是根据父级从上往下捋的
   return data.filter(item => {
     item.child = data.filter(item2 => {
       return item.id === item2.parentId
@@ -62,4 +64,24 @@ function getTreeData (data, parentId) {
     }, [])
   }
   return getChildByParentId(0)
+}
+
+
+/**
+ * 嵌套型格式转扁平型格式
+ * @param {Array} data 
+ */
+function NestedToFlat(data, pid) { 
+  var res = []
+  for (var i = 0; i < data.length; i++) {
+    res.push({
+      id: data[i].id,
+      name: data[i].name,
+      pid: pid || 0
+    })
+    if (data[i].children) {
+      res = res.concat(NestedToFlat(data[i].children, data[i].id));
+    }
+  }
+  return res;
 }
