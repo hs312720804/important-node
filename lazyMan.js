@@ -4,6 +4,7 @@ class LazyMan {
   constructor (name) {
     console.log(`hi I am ${name}`)
     setTimeout(() => {
+      console.log('111')
       this.next()
     })
   }
@@ -12,6 +13,7 @@ class LazyMan {
     fn && fn()
   }
   eat (value) {
+    console.log('222')
     const fn = () => {
       console.log(`I am eat ${value}`)
       this.next()

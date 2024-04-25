@@ -94,7 +94,7 @@
  */
 var spiralMatrix = function(num, m) {
     let n = Math.ceil(num / m)
-    const matrix = new Array(m).fill(0).map(() => new Array(n).fill(-1)); // 初始化-1
+    const matrix = new Array(m).fill(0).map(() => new Array(n).fill('*')); // 初始化-1
     let left = 0, right = n - 1, top = 0, bottom = m - 1;
     let count = 1
     while (left <= right && top <= bottom && count <= num) {
@@ -137,5 +137,6 @@ var spiralMatrix = function(num, m) {
 };
 
 
-console.log(spiralMatrix(9, 4))
+// console.log(spiralMatrix(9, 4))
+console.log(spiralMatrix(3, 5))
   
