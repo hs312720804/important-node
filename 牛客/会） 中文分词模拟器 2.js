@@ -42,31 +42,29 @@
 function test (sentence, Trie) {
 
   let result = []  //# 存储结果
-  let i = 0
+  let start = 0
 
   // # 遍历句子中的每个字符
-  while (i < sentence.length){
+  while (start < sentence.length){
 
       // # 如果当前字符i不是字母，则直接将其添加到结果中
-      if (!sentence[i].match(/[a-z]/g)) {
+      if (!sentence[start].match(/[a-z]/g)) {
 
-        result.push(sentence[i])
-        i += 1
+        // result.push(sentence[start])
+        start++
         continue  //# 跳过此次迭代，继续下一次迭代
       }
 
       // # 如果当前字符i是字母，则从句子的末尾开始，寻找以该字符为起点的最长的在字典中存在的单词
-      j = sentence.length
-      while (j > i) {
+      end = sentence.length
+      while (end > start) {
 
         // node = root
-        let complete = true
-        for(let k = i; k < j; k++) {
+        for(let k = start; k < end; k++) {
 
           // # 如果当前字符不是字母，或者在 Trie 中不存在当前字符对应的节点，则说明i:j字符串不是一个单词，终止for循环
           let flagIndex = Trie.findIndex(item => item === sentence[k])
           if (!sentence[k].match(/[a-z]/g) || flagIndex === -1) {
-            complete = false
             break  //# 终止循环，不再执行后续的迭代
           }
     
@@ -76,23 +74,23 @@ function test (sentence, Trie) {
 
 
         // # 如果i:j字符串是一个单词，则终止while循环
-        let flagIndex = Trie.findIndex(item => item === sentence.slice(i, j))
+        let flagIndex = Trie.findIndex(item => item === sentence.slice(start, end))
         if (flagIndex > -1) {
           break
         }
         // # 如果i:j字符串不是一个单词，则缩短该字符串
-        j--
+        end--
       }
     // # 如果没有找到单词，则将当前字符作为一个单独的单词添加到结果中
-    if (j == i) {
-      result.push(sentence[i])
-      i++
+    if (end == start) {
+      result.push(sentence[start])
+      start++
     }
 
     // # 如果找到了单词，则将该单词添加到结果中
     else{
-      result.push(sentence.slice(i, j))
-      i = j
+      result.push(sentence.slice(start, end))
+      start = end
     }
   }
 
@@ -101,5 +99,7 @@ function test (sentence, Trie) {
 }
 
 
-test('ilovechina', ['i', 'love', 'china', 'ch', 'na', 've', 'lo', 'this', 'is', 'the', 'word'])
+// test('ilovechina', ['i', 'love', 'china', 'ch', 'na', 've', 'lo', 'this', 'is', 'the', 'word'])
 // test('ilovechina', ['i', 'ilove', 'lo', 'love', 'ch', 'china', 'lovechina'])
+test('ilovechina,thewordisbeautiful', 
+['i','love','china','ch','na','ve','lo','this','is','the','word','beauti', 'tiful','ful'])

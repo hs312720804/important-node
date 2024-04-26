@@ -23,7 +23,7 @@ function main(str,d) {
     d.splice(0, i + 1);
     i = 0;
   }
-  console.log(dic)
+  // console.log(dic)
   let ans = "";
   let first = 0, last = str.length;
   while (first != str.length) {
@@ -52,7 +52,7 @@ function main(str,d) {
   //单个分号是否单个输出
   // ans.erase(ans.end()-1);
   // cout<<ans<<endl;
-  console.log(ans)
+  console.log('1', ans)
 }
 
 // a('ilovechina', ['i', 'love', 'china', 'ch', 'na', 've', 'lo', 'this', 'is', 'the', 'word'])
