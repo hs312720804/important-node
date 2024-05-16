@@ -34,7 +34,9 @@ const urls = [];
 // concurrencyRequest(urls, 2).then(res => {
 //     console.log(res);
 // })
-
 sendRequest(urls, 2, (res) => {
   console.log(res)
 })
+
+
+

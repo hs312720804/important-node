@@ -39,6 +39,18 @@
 // dictionary = input().split(",")
 // for word in dictionary:
 //     insert(word.lower())  # 将字典中的每个单词插入到 Trie 中
+
+// 题解：
+// 1、中文分词模拟器
+// 给定一个连续不包含空格的字符串，该字符串仅包含英文小写字母及英文标点符号（逗号、分号、句号），同时给定词库，对该字符串进行精确分词。分词原则：采用分词顺序优先且最长匹配原则
+
+// 输入描述：
+// 第一行输入待分词语句 “ilovechina”，字符串长度限制：0 < length < 256
+// 第二行输入中文词库 “i,love,china,ch,na,ve,lo,this,is,this,word”，词库长度限制：1 < length < 100000
+// 输出描述：
+// 按顺序输出分词结果 “i,love,china”
+// ————————————————
+
 function test (sentence, Trie) {
 
   let result = []  //# 存储结果
